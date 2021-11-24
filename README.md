@@ -8,7 +8,9 @@ Transfer learning is used in this project, VGG 16 is used as the base model, two
 
 
 i.	Add a diagram
+![Alt text](asset/network_architecture.PNG?raw=true "Title")
 ii.	Input and output information
+
 
 The input is 5 different set of images. 
 The output is the prediction of the class. 
