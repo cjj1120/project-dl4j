@@ -1,0 +1,156 @@
+C:\Users\User\.jdks\corretto-1.8.0_302\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.1.1\lib\idea_rt.jar=59303:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.1.1\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\User\AppData\Local\Temp\classpath68784241.jar main
+2021-11-18 16:34:36 INFO  ZooModel:382 - Using cached model at C:\Users\User\.deeplearning4j\models\vgg16\vgg16_dl4j_inference.zip
+2021-11-18 16:34:36 INFO  ZooModel:382 - Verifying download...
+2021-11-18 16:34:37 INFO  ZooModel:382 - Checksum local is 3501732770, expecting 3501732770
+2021-11-18 16:34:44 INFO  Nd4jBackend:386 - Loaded [CpuBackend] backend
+2021-11-18 16:34:45 INFO  NativeOpsHolder:386 - Number of threads used for linear algebra: 6
+2021-11-18 16:34:45 INFO  CpuNDArrayFactory:382 - Binary level Generic x86 optimization level AVX/AVX2
+2021-11-18 16:34:45 INFO  Nd4jBlas:386 - Number of threads used for OpenMP BLAS: 6
+2021-11-18 16:34:45 INFO  DefaultOpExecutioner:393 - Backend used: [CPU]; OS: [Windows 10]
+2021-11-18 16:34:45 INFO  DefaultOpExecutioner:393 - Cores: [6]; Memory: [3.5GB];
+2021-11-18 16:34:45 INFO  DefaultOpExecutioner:386 - Blas vendor: [OPENBLAS]
+2021-11-18 16:34:45 INFO  CpuBackend:386 - Backend build information:
+ GCC: "10.3.0"
+STD version: 201103L
+DEFAULT_ENGINE: samediff::ENGINE_CPU
+HAVE_FLATBUFFERS
+HAVE_OPENBLAS
+2021-11-18 16:34:48 INFO  ComputationGraph:403 - Starting ComputationGraph with WorkspaceModes set to [training: NONE; inference: SINGLE], cacheMode set to [NONE]
+2021-11-18 16:34:48 INFO  main:382 - 
+========================================================================================================
+VertexName (VertexType)           nIn,nOut     TotalParams   ParamsShape                  Vertex Inputs 
+========================================================================================================
+input_1 (InputVertex)             -,-          -             -                            -             
+block1_conv1 (ConvolutionLayer)   3,64         1,792         W:{64,3,3,3}, b:{1,64}       [input_1]     
+block1_conv2 (ConvolutionLayer)   64,64        36,928        W:{64,64,3,3}, b:{1,64}      [block1_conv1]
+block1_pool (SubsamplingLayer)    -,-          0             -                            [block1_conv2]
+block2_conv1 (ConvolutionLayer)   64,128       73,856        W:{128,64,3,3}, b:{1,128}    [block1_pool] 
+block2_conv2 (ConvolutionLayer)   128,128      147,584       W:{128,128,3,3}, b:{1,128}   [block2_conv1]
+block2_pool (SubsamplingLayer)    -,-          0             -                            [block2_conv2]
+block3_conv1 (ConvolutionLayer)   128,256      295,168       W:{256,128,3,3}, b:{1,256}   [block2_pool] 
+block3_conv2 (ConvolutionLayer)   256,256      590,080       W:{256,256,3,3}, b:{1,256}   [block3_conv1]
+block3_conv3 (ConvolutionLayer)   256,256      590,080       W:{256,256,3,3}, b:{1,256}   [block3_conv2]
+block3_pool (SubsamplingLayer)    -,-          0             -                            [block3_conv3]
+block4_conv1 (ConvolutionLayer)   256,512      1,180,160     W:{512,256,3,3}, b:{1,512}   [block3_pool] 
+block4_conv2 (ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_conv1]
+block4_conv3 (ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_conv2]
+block4_pool (SubsamplingLayer)    -,-          0             -                            [block4_conv3]
+block5_conv1 (ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_pool] 
+block5_conv2 (ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block5_conv1]
+block5_conv3 (ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block5_conv2]
+block5_pool (SubsamplingLayer)    -,-          0             -                            [block5_conv3]
+flatten (PreprocessorVertex)      -,-          -             -                            [block5_pool] 
+fc1 (DenseLayer)                  25088,4096   102,764,544   W:{25088,4096}, b:{1,4096}   [flatten]     
+fc2 (DenseLayer)                  4096,4096    16,781,312    W:{4096,4096}, b:{1,4096}    [fc1]         
+predictions (DenseLayer)          4096,1000    4,097,000     W:{4096,1000}, b:{1,1000}    [fc2]         
+--------------------------------------------------------------------------------------------------------
+            Total Parameters:  138,357,544
+        Trainable Parameters:  138,357,544
+           Frozen Parameters:  0
+========================================================================================================
+
+2021-11-18 16:34:48 INFO  FrozenLayer:403 - Gradients for the frozen layer are not set and will therefore will not be updated.Warning will be issued only once per instance
+2021-11-18 16:34:48 INFO  main:382 - 
+===============================================================================================================
+VertexName (VertexType)                  nIn,nOut     TotalParams   ParamsShape                  Vertex Inputs 
+===============================================================================================================
+input_1 (InputVertex)                    -,-          -             -                            -             
+block1_conv1 (Frozen ConvolutionLayer)   3,64         1,792         W:{64,3,3,3}, b:{1,64}       [input_1]     
+block1_conv2 (Frozen ConvolutionLayer)   64,64        36,928        W:{64,64,3,3}, b:{1,64}      [block1_conv1]
+block1_pool (Frozen SubsamplingLayer)    -,-          0             -                            [block1_conv2]
+block2_conv1 (Frozen ConvolutionLayer)   64,128       73,856        W:{128,64,3,3}, b:{1,128}    [block1_pool] 
+block2_conv2 (Frozen ConvolutionLayer)   128,128      147,584       W:{128,128,3,3}, b:{1,128}   [block2_conv1]
+block2_pool (Frozen SubsamplingLayer)    -,-          0             -                            [block2_conv2]
+block3_conv1 (Frozen ConvolutionLayer)   128,256      295,168       W:{256,128,3,3}, b:{1,256}   [block2_pool] 
+block3_conv2 (Frozen ConvolutionLayer)   256,256      590,080       W:{256,256,3,3}, b:{1,256}   [block3_conv1]
+block3_conv3 (Frozen ConvolutionLayer)   256,256      590,080       W:{256,256,3,3}, b:{1,256}   [block3_conv2]
+block3_pool (Frozen SubsamplingLayer)    -,-          0             -                            [block3_conv3]
+block4_conv1 (Frozen ConvolutionLayer)   256,512      1,180,160     W:{512,256,3,3}, b:{1,512}   [block3_pool] 
+block4_conv2 (Frozen ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_conv1]
+block4_conv3 (Frozen ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_conv2]
+block4_pool (Frozen SubsamplingLayer)    -,-          0             -                            [block4_conv3]
+block5_conv1 (Frozen ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_pool] 
+block5_conv2 (Frozen ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block5_conv1]
+block5_conv3 (Frozen ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block5_conv2]
+block5_pool (Frozen SubsamplingLayer)    -,-          0             -                            [block5_conv3]
+flatten (FrozenVertex)                   -,-          -             -                            [block5_pool] 
+fc1 (Frozen DenseLayer)                  25088,4096   102,764,544   W:{25088,4096}, b:{1,4096}   [flatten]     
+fc2 (Frozen DenseLayer)                  4096,4096    16,781,312    W:{4096,4096}, b:{1,4096}    [fc1]         
+predictions (OutputLayer)                4096,3       12,291        W:{4096,3}, b:{1,3}          [fc2]         
+---------------------------------------------------------------------------------------------------------------
+            Total Parameters:  134,272,835
+        Trainable Parameters:  12,291
+           Frozen Parameters:  134,260,544
+===============================================================================================================
+
+2021-11-18 16:34:51 INFO  BaseImageRecordReader:393 - ImageRecordReader: 3 label classes inferred using label generator ParentPathLabelGenerator
+2021-11-18 16:34:51 INFO  BaseImageRecordReader:393 - ImageRecordReader: 3 label classes inferred using label generator ParentPathLabelGenerator
+2021-11-18 16:34:52 INFO  VertxUIServer:386 - Deeplearning4j UI server started at: http://localhost:9000
+2021-11-18 16:34:52 INFO  VertxUIServer:386 - StatsStorage instance attached to UI: InMemoryStatsStorage(uid=0bc09695)
+2021-11-18 16:34:53 INFO  FrozenLayer:403 - Frozen layer instance found! Frozen layers are treated as always in test mode. Warning will only be issued once per instance
+2021-11-18 16:35:17 INFO  ScoreIterationListener:393 - Score at iteration 0 is 1.130281925201416
+2021-11-18 16:35:17 INFO  main:382 - Evaluate model at iter 0...
+2021-11-18 16:36:28 INFO  main:382 - 
+
+========================Evaluation Metrics========================
+ # of classes:    3
+ Accuracy:        0.3243
+ Precision:       0.3243	(2 classes excluded from average)
+ Recall:          0.3333
+ F1 Score:        0.4898	(2 classes excluded from average)
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+
+Warning: 2 classes were never predicted by the model and were excluded from average precision
+Classes excluded from average precision: [1, 2]
+
+=========================Confusion Matrix=========================
+  0  1  2
+----------
+ 24  0  0 | 0 = hat
+ 25  0  0 | 1 = pants
+ 25  0  0 | 2 = shirt
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-18 16:36:49 INFO  ScoreIterationListener:393 - Score at iteration 1 is 15.83027172088623
+2021-11-18 16:37:05 INFO  ScoreIterationListener:393 - Score at iteration 2 is 7.584112167358398
+2021-11-18 16:37:19 INFO  ScoreIterationListener:393 - Score at iteration 3 is 15.83027172088623
+2021-11-18 16:37:34 INFO  ScoreIterationListener:393 - Score at iteration 4 is 9.51523494720459
+2021-11-18 16:37:48 INFO  ScoreIterationListener:393 - Score at iteration 5 is 14.391156196594238
+2021-11-18 16:38:03 INFO  ScoreIterationListener:393 - Score at iteration 6 is 15.83027172088623
+2021-11-18 16:38:18 INFO  ScoreIterationListener:393 - Score at iteration 7 is 15.83027172088623
+2021-11-18 16:38:32 INFO  ScoreIterationListener:393 - Score at iteration 8 is 14.391156196594238
+2021-11-18 16:38:46 INFO  ScoreIterationListener:393 - Score at iteration 9 is 15.83027172088623
+2021-11-18 16:39:05 INFO  ScoreIterationListener:393 - Score at iteration 10 is 15.83027172088623
+2021-11-18 16:39:05 INFO  main:382 - Evaluate model at iter 10...
+2021-11-18 16:40:14 INFO  main:382 - 
+
+========================Evaluation Metrics========================
+ # of classes:    3
+ Accuracy:        0.3378
+ Precision:       0.3378	(2 classes excluded from average)
+ Recall:          0.3333
+ F1 Score:        0.5051	(2 classes excluded from average)
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+
+Warning: 2 classes were never predicted by the model and were excluded from average precision
+Classes excluded from average precision: [0, 1]
+
+=========================Confusion Matrix=========================
+  0  1  2
+----------
+  0  0 24 | 0 = hat
+  0  0 25 | 1 = pants
+  0  0 25 | 2 = shirt
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-18 16:40:39 INFO  ScoreIterationListener:393 - Score at iteration 11 is 14.391156196594238
+2021-11-18 16:40:54 INFO  ScoreIterationListener:393 - Score at iteration 12 is 15.83027172088623
+2021-11-18 16:41:09 INFO  ScoreIterationListener:393 - Score at iteration 13 is 15.81399917602539
+2021-11-18 16:41:24 INFO  ScoreIterationListener:393 - Score at iteration 14 is 14.391156196594238
+2021-11-18 16:41:38 INFO  ScoreIterationListener:393 - Score at iteration 15 is 15.83027172088623
+2021-11-18 16:41:53 INFO  ScoreIterationListener:393 - Score at iteration 16 is 15.83027172088623
+2021-11-18 16:42:08 INFO  ScoreIterationListener:393 - Score at iteration 17 is 14.391156196594238
+2021-11-18 16:42:14 INFO  ScoreIterationListener:393 - Score at iteration 18 is 16.44703565325056
+2021-11-18 16:42:14 INFO  main:382 - Model build complete

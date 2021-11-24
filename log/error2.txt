@@ -1,0 +1,25 @@
+C:\Users\User\.jdks\corretto-1.8.0_302\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.1.1\lib\idea_rt.jar=63136:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.1.1\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\User\AppData\Local\Temp\classpath583035641.jar test1
+java.lang.UnsatisfiedLinkError: C:\Users\User\.javacpp\cache\cuda-11.2-8.1-1.5.5-windows-x86_64.jar\org\bytedeco\cuda\windows-x86_64\jnicudart.dll: Can't find dependent libraries
+	at java.lang.ClassLoader$NativeLibrary.load(Native Method)
+	at java.lang.ClassLoader.loadLibrary0(ClassLoader.java:1934)
+	at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1817)
+	at java.lang.Runtime.load0(Runtime.java:810)
+	at java.lang.System.load(System.java:1088)
+	at org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1668)
+	at org.bytedeco.javacpp.Loader.load(Loader.java:1328)
+	at org.bytedeco.javacpp.Loader.load(Loader.java:1132)
+	at org.bytedeco.cuda.global.cudart.<clinit>(cudart.java:14)
+	at org.nd4j.linalg.jcublas.JCublasBackend.canRun(JCublasBackend.java:67)
+	at org.nd4j.linalg.jcublas.JCublasBackend.isAvailable(JCublasBackend.java:52)
+	at org.nd4j.linalg.factory.Nd4jBackend.load(Nd4jBackend.java:160)
+	at org.nd4j.linalg.factory.Nd4j.initContext(Nd4j.java:5092)
+	at org.nd4j.linalg.factory.Nd4j.<clinit>(Nd4j.java:270)
+	at org.datavec.image.transform.PipelineImageTransform.<init>(PipelineImageTransform.java:82)
+	at org.datavec.image.transform.PipelineImageTransform.<init>(PipelineImageTransform.java:74)
+	at org.datavec.image.transform.PipelineImageTransform.<init>(PipelineImageTransform.java:66)
+	at test1.main(test1.java:59)
+log4j:WARN No appenders could be found for logger (org.nd4j.linalg.factory.Nd4jBackend).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+
+Process finished with exit code 130
