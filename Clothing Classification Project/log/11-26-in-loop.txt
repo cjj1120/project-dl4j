@@ -1,0 +1,594 @@
+Something is wrong here, at the end when i train it just never ending and kept training in loop...
+
+C:\Users\User\.jdks\corretto-1.8.0_302\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.1.1\lib\idea_rt.jar=64914:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.1.1\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\User\AppData\Local\Temp\classpath1997904052.jar main
+2021-11-26 00:59:16 INFO  main:382 - Model building... ...
+2021-11-26 00:59:16 INFO  ZooModel:382 - Using cached model at C:\Users\User\.deeplearning4j\models\vgg16\vgg16_dl4j_inference.zip
+2021-11-26 00:59:16 INFO  ZooModel:382 - Verifying download...
+2021-11-26 00:59:17 INFO  ZooModel:382 - Checksum local is 3501732770, expecting 3501732770
+2021-11-26 00:59:24 INFO  Nd4jBackend:386 - Loaded [CpuBackend] backend
+2021-11-26 00:59:26 INFO  NativeOpsHolder:386 - Number of threads used for linear algebra: 6
+2021-11-26 00:59:26 INFO  CpuNDArrayFactory:382 - Binary level Generic x86 optimization level AVX/AVX2
+2021-11-26 00:59:26 INFO  Nd4jBlas:386 - Number of threads used for OpenMP BLAS: 6
+2021-11-26 00:59:26 INFO  DefaultOpExecutioner:393 - Backend used: [CPU]; OS: [Windows 10]
+2021-11-26 00:59:26 INFO  DefaultOpExecutioner:393 - Cores: [6]; Memory: [3.5GB];
+2021-11-26 00:59:26 INFO  DefaultOpExecutioner:386 - Blas vendor: [OPENBLAS]
+2021-11-26 00:59:26 INFO  CpuBackend:386 - Backend build information:
+ GCC: "10.3.0"
+STD version: 201103L
+DEFAULT_ENGINE: samediff::ENGINE_CPU
+HAVE_FLATBUFFERS
+HAVE_OPENBLAS
+2021-11-26 00:59:29 INFO  ComputationGraph:403 - Starting ComputationGraph with WorkspaceModes set to [training: NONE; inference: SINGLE], cacheMode set to [NONE]
+2021-11-26 00:59:29 INFO  main:382 - 
+========================================================================================================
+VertexName (VertexType)           nIn,nOut     TotalParams   ParamsShape                  Vertex Inputs 
+========================================================================================================
+input_1 (InputVertex)             -,-          -             -                            -             
+block1_conv1 (ConvolutionLayer)   3,64         1,792         W:{64,3,3,3}, b:{1,64}       [input_1]     
+block1_conv2 (ConvolutionLayer)   64,64        36,928        W:{64,64,3,3}, b:{1,64}      [block1_conv1]
+block1_pool (SubsamplingLayer)    -,-          0             -                            [block1_conv2]
+block2_conv1 (ConvolutionLayer)   64,128       73,856        W:{128,64,3,3}, b:{1,128}    [block1_pool] 
+block2_conv2 (ConvolutionLayer)   128,128      147,584       W:{128,128,3,3}, b:{1,128}   [block2_conv1]
+block2_pool (SubsamplingLayer)    -,-          0             -                            [block2_conv2]
+block3_conv1 (ConvolutionLayer)   128,256      295,168       W:{256,128,3,3}, b:{1,256}   [block2_pool] 
+block3_conv2 (ConvolutionLayer)   256,256      590,080       W:{256,256,3,3}, b:{1,256}   [block3_conv1]
+block3_conv3 (ConvolutionLayer)   256,256      590,080       W:{256,256,3,3}, b:{1,256}   [block3_conv2]
+block3_pool (SubsamplingLayer)    -,-          0             -                            [block3_conv3]
+block4_conv1 (ConvolutionLayer)   256,512      1,180,160     W:{512,256,3,3}, b:{1,512}   [block3_pool] 
+block4_conv2 (ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_conv1]
+block4_conv3 (ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_conv2]
+block4_pool (SubsamplingLayer)    -,-          0             -                            [block4_conv3]
+block5_conv1 (ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_pool] 
+block5_conv2 (ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block5_conv1]
+block5_conv3 (ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block5_conv2]
+block5_pool (SubsamplingLayer)    -,-          0             -                            [block5_conv3]
+flatten (PreprocessorVertex)      -,-          -             -                            [block5_pool] 
+fc1 (DenseLayer)                  25088,4096   102,764,544   W:{25088,4096}, b:{1,4096}   [flatten]     
+fc2 (DenseLayer)                  4096,4096    16,781,312    W:{4096,4096}, b:{1,4096}    [fc1]         
+predictions (DenseLayer)          4096,1000    4,097,000     W:{4096,1000}, b:{1,1000}    [fc2]         
+--------------------------------------------------------------------------------------------------------
+            Total Parameters:  138,357,544
+        Trainable Parameters:  138,357,544
+           Frozen Parameters:  0
+========================================================================================================
+
+2021-11-26 00:59:31 INFO  FrozenLayer:403 - Gradients for the frozen layer are not set and will therefore will not be updated.Warning will be issued only once per instance
+2021-11-26 00:59:31 INFO  main:382 - 
+===============================================================================================================
+VertexName (VertexType)                  nIn,nOut     TotalParams   ParamsShape                  Vertex Inputs 
+===============================================================================================================
+input_1 (InputVertex)                    -,-          -             -                            -             
+block1_conv1 (Frozen ConvolutionLayer)   3,64         1,792         W:{64,3,3,3}, b:{1,64}       [input_1]     
+block1_conv2 (Frozen ConvolutionLayer)   64,64        36,928        W:{64,64,3,3}, b:{1,64}      [block1_conv1]
+block1_pool (Frozen SubsamplingLayer)    -,-          0             -                            [block1_conv2]
+block2_conv1 (Frozen ConvolutionLayer)   64,128       73,856        W:{128,64,3,3}, b:{1,128}    [block1_pool] 
+block2_conv2 (Frozen ConvolutionLayer)   128,128      147,584       W:{128,128,3,3}, b:{1,128}   [block2_conv1]
+block2_pool (Frozen SubsamplingLayer)    -,-          0             -                            [block2_conv2]
+block3_conv1 (Frozen ConvolutionLayer)   128,256      295,168       W:{256,128,3,3}, b:{1,256}   [block2_pool] 
+block3_conv2 (Frozen ConvolutionLayer)   256,256      590,080       W:{256,256,3,3}, b:{1,256}   [block3_conv1]
+block3_conv3 (Frozen ConvolutionLayer)   256,256      590,080       W:{256,256,3,3}, b:{1,256}   [block3_conv2]
+block3_pool (Frozen SubsamplingLayer)    -,-          0             -                            [block3_conv3]
+block4_conv1 (Frozen ConvolutionLayer)   256,512      1,180,160     W:{512,256,3,3}, b:{1,512}   [block3_pool] 
+block4_conv2 (Frozen ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_conv1]
+block4_conv3 (Frozen ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_conv2]
+block4_pool (Frozen SubsamplingLayer)    -,-          0             -                            [block4_conv3]
+block5_conv1 (Frozen ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block4_pool] 
+block5_conv2 (Frozen ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block5_conv1]
+block5_conv3 (Frozen ConvolutionLayer)   512,512      2,359,808     W:{512,512,3,3}, b:{1,512}   [block5_conv2]
+block5_pool (Frozen SubsamplingLayer)    -,-          0             -                            [block5_conv3]
+flatten (PreprocessorVertex)             -,-          -             -                            [block5_pool] 
+fc1 (DenseLayer)                         25088,4096   102,764,544   W:{25088,4096}, b:{1,4096}   [flatten]     
+fc2 (DenseLayer)                         4096,1024    4,195,328     W:{4096,1024}, b:{1,1024}    [fc1]         
+fc3 (DenseLayer)                         1024,256     262,400       W:{1024,256}, b:{1,256}      [fc2]         
+newpredictions (OutputLayer)             256,10       2,570         W:{256,10}, b:{1,10}         [fc3]         
+---------------------------------------------------------------------------------------------------------------
+            Total Parameters:  121,939,530
+        Trainable Parameters:  107,224,842
+           Frozen Parameters:  14,714,688
+===============================================================================================================
+
+2021-11-26 00:59:35 INFO  BaseImageRecordReader:393 - ImageRecordReader: 10 label classes inferred using label generator ParentPathLabelGenerator
+2021-11-26 00:59:35 INFO  BaseImageRecordReader:393 - ImageRecordReader: 10 label classes inferred using label generator ParentPathLabelGenerator
+[dress, hat, longsleeve, outwear, pants, shirt, shoes, shorts, skirt, t-shirt]
+2021-11-26 00:59:36 INFO  VertxUIServer:386 - Deeplearning4j UI server started at: http://localhost:9000
+2021-11-26 00:59:36 INFO  VertxUIServer:386 - StatsStorage instance attached to UI: InMemoryStatsStorage(uid=d7340113)
+2021-11-26 00:59:37 INFO  FrozenLayer:403 - Frozen layer instance found! Frozen layers are treated as always in test mode. Warning will only be issued once per instance
+2021-11-26 01:00:03 INFO  ScoreIterationListener:393 - Score at iteration 0 is 3.134047031402588
+2021-11-26 01:00:03 INFO  main:382 - Evaluate model at iter 0...
+2021-11-26 01:03:19 INFO  main:382 - 
+
+========================Evaluation Metrics========================
+ # of classes:    10
+ Accuracy:        0.1250
+ Precision:       0.4152	(7 classes excluded from average)
+ Recall:          0.1273
+ F1 Score:        0.1791	(7 classes excluded from average)
+Precision, recall & F1: macro-averaged (equally weighted avg. of 10 classes)
+
+Warning: 7 classes were never predicted by the model and were excluded from average precision
+Classes excluded from average precision: [0, 1, 3, 4, 7, 8, 9]
+
+=========================Confusion Matrix=========================
+  0  1  2  3  4  5  6  7  8  9
+-------------------------------
+  0  0  4  0  0 18  0  0  0  0 | 0 = dress
+  0  0 10  0  0 13  0  0  0  0 | 1 = hat
+  0  0  5  0  0 17  0  0  0  0 | 2 = longsleeve
+  0  0  2  0  0 21  0  0  0  0 | 3 = outwear
+  0  0  6  0  0 16  0  0  0  0 | 4 = pants
+  0  0  1  0  0 21  0  0  0  0 | 5 = shirt
+  0  0  2  0  0 18  2  0  0  0 | 6 = shoes
+  0  0  2  0  0 21  0  0  0  0 | 7 = shorts
+  0  0  4  0  0 19  0  0  0  0 | 8 = skirt
+  0  0  2  0  0 20  0  0  0  0 | 9 = t-shirt
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-26 01:03:45 INFO  ScoreIterationListener:393 - Score at iteration 1 is 4.093475818634033
+2021-11-26 01:04:01 INFO  ScoreIterationListener:393 - Score at iteration 2 is 3.326458692550659
+2021-11-26 01:04:16 INFO  ScoreIterationListener:393 - Score at iteration 3 is 3.7513933181762695
+2021-11-26 01:04:34 INFO  ScoreIterationListener:393 - Score at iteration 4 is 3.490222454071045
+2021-11-26 01:04:49 INFO  ScoreIterationListener:393 - Score at iteration 5 is 2.2558131217956543
+2021-11-26 01:05:06 INFO  ScoreIterationListener:393 - Score at iteration 6 is 2.1218321323394775
+2021-11-26 01:05:21 INFO  ScoreIterationListener:393 - Score at iteration 7 is 1.6713316440582275
+2021-11-26 01:05:36 INFO  ScoreIterationListener:393 - Score at iteration 8 is 1.5650207996368408
+2021-11-26 01:05:51 INFO  ScoreIterationListener:393 - Score at iteration 9 is 1.8844603300094604
+2021-11-26 01:06:09 INFO  ScoreIterationListener:393 - Score at iteration 10 is 2.094759225845337
+2021-11-26 01:06:09 INFO  main:382 - Evaluate model at iter 10...
+2021-11-26 01:09:20 INFO  main:382 - 
+
+========================Evaluation Metrics========================
+ # of classes:    10
+ Accuracy:        0.5446
+ Precision:       0.6579
+ Recall:          0.5443
+ F1 Score:        0.5542
+Precision, recall & F1: macro-averaged (equally weighted avg. of 10 classes)
+
+
+=========================Confusion Matrix=========================
+  0  1  2  3  4  5  6  7  8  9
+-------------------------------
+ 11  1  1  7  0  1  0  0  1  0 | 0 = dress
+  0 22  0  0  0  0  0  1  0  0 | 1 = hat
+  0  1 10 10  0  1  0  0  0  0 | 2 = longsleeve
+  2  1  2 17  0  1  0  0  0  0 | 3 = outwear
+  0  0  1  1 18  0  0  1  1  0 | 4 = pants
+  0  3  6  3  0  9  0  1  0  0 | 5 = shirt
+  0  9  0  1  0  0 12  0  0  0 | 6 = shoes
+  0  0  2  8  0  0  0  8  5  0 | 7 = shorts
+  0  3  4  5  1  0  0  5  5  0 | 8 = skirt
+  0  1  3  6  0  0  0  2  0 10 | 9 = t-shirt
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-26 01:09:42 INFO  ScoreIterationListener:393 - Score at iteration 11 is 1.4878305196762085
+2021-11-26 01:09:58 INFO  ScoreIterationListener:393 - Score at iteration 12 is 1.4711753129959106
+2021-11-26 01:10:13 INFO  ScoreIterationListener:393 - Score at iteration 13 is 1.3092838525772095
+2021-11-26 01:10:28 INFO  ScoreIterationListener:393 - Score at iteration 14 is 1.2360265254974365
+2021-11-26 01:10:44 INFO  ScoreIterationListener:393 - Score at iteration 15 is 1.128511905670166
+2021-11-26 01:10:59 INFO  ScoreIterationListener:393 - Score at iteration 16 is 1.5339462757110596
+2021-11-26 01:11:13 INFO  ScoreIterationListener:393 - Score at iteration 17 is 1.2495074272155762
+2021-11-26 01:11:28 INFO  ScoreIterationListener:393 - Score at iteration 18 is 1.7914587259292603
+2021-11-26 01:11:42 INFO  ScoreIterationListener:393 - Score at iteration 19 is 1.5600354671478271
+2021-11-26 01:12:02 INFO  ScoreIterationListener:393 - Score at iteration 20 is 0.9129519462585449
+2021-11-26 01:12:02 INFO  main:382 - Evaluate model at iter 20...
+2021-11-26 01:15:17 INFO  main:382 - 
+
+========================Evaluation Metrics========================
+ # of classes:    10
+ Accuracy:        0.6875
+ Precision:       0.6979
+ Recall:          0.6885
+ F1 Score:        0.6864
+Precision, recall & F1: macro-averaged (equally weighted avg. of 10 classes)
+
+
+=========================Confusion Matrix=========================
+  0  1  2  3  4  5  6  7  8  9
+-------------------------------
+ 13  0  1  1  0  2  0  1  1  3 | 0 = dress
+  0 19  1  0  2  0  0  0  0  1 | 1 = hat
+  3  0 11  1  1  4  0  0  1  1 | 2 = longsleeve
+  4  0  2 11  0  5  0  1  0  0 | 3 = outwear
+  0  0  0  0 21  0  0  1  0  0 | 4 = pants
+  1  0  3  2  0 15  0  1  0  0 | 5 = shirt
+  0  1  0  0  0  0 21  0  0  0 | 6 = shoes
+  0  0  0  1  2  0  0 17  3  0 | 7 = shorts
+  1  0  0  0  1  1  0  8 11  1 | 8 = skirt
+  2  0  5  0  0  0  0  0  0 15 | 9 = t-shirt
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-26 01:15:39 INFO  ScoreIterationListener:393 - Score at iteration 21 is 1.108515977859497
+2021-11-26 01:15:53 INFO  ScoreIterationListener:393 - Score at iteration 22 is 0.8899444341659546
+2021-11-26 01:16:07 INFO  ScoreIterationListener:393 - Score at iteration 23 is 0.9282028675079346
+2021-11-26 01:16:21 INFO  ScoreIterationListener:393 - Score at iteration 24 is 0.5748426914215088
+2021-11-26 01:16:35 INFO  ScoreIterationListener:393 - Score at iteration 25 is 1.0038563013076782
+2021-11-26 01:16:49 INFO  ScoreIterationListener:393 - Score at iteration 26 is 0.8124400973320007
+2021-11-26 01:17:03 INFO  ScoreIterationListener:393 - Score at iteration 27 is 1.0847344398498535
+2021-11-26 01:17:17 INFO  ScoreIterationListener:393 - Score at iteration 28 is 1.2766443490982056
+2021-11-26 01:17:31 INFO  ScoreIterationListener:393 - Score at iteration 29 is 0.9709766507148743
+2021-11-26 01:17:49 INFO  ScoreIterationListener:393 - Score at iteration 30 is 0.46585384011268616
+2021-11-26 01:17:49 INFO  main:382 - Evaluate model at iter 30...
+2021-11-26 01:20:55 INFO  main:382 - 
+
+========================Evaluation Metrics========================
+ # of classes:    10
+ Accuracy:        0.7411
+ Precision:       0.7972
+ Recall:          0.7417
+ F1 Score:        0.7371
+Precision, recall & F1: macro-averaged (equally weighted avg. of 10 classes)
+
+
+=========================Confusion Matrix=========================
+  0  1  2  3  4  5  6  7  8  9
+-------------------------------
+ 14  0  3  0  0  2  0  0  2  1 | 0 = dress
+  0 21  2  0  0  0  0  0  0  0 | 1 = hat
+  1  0 19  0  0  2  0  0  0  0 | 2 = longsleeve
+  3  0  7  9  0  4  0  0  0  0 | 3 = outwear
+  0  0  0  0 21  0  0  1  0  0 | 4 = pants
+  1  0  3  0  0 18  0  0  0  0 | 5 = shirt
+  0  1  0  0  0  0 21  0  0  0 | 6 = shoes
+  1  0  0  0  2  0  0 17  3  0 | 7 = shorts
+  1  0  0  0  1  0  0  3 18  0 | 8 = skirt
+  4  0  9  0  0  0  0  0  1  8 | 9 = t-shirt
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-26 01:21:16 INFO  ScoreIterationListener:393 - Score at iteration 31 is 0.7661018967628479
+2021-11-26 01:21:30 INFO  ScoreIterationListener:393 - Score at iteration 32 is 0.5435032248497009
+2021-11-26 01:21:45 INFO  ScoreIterationListener:393 - Score at iteration 33 is 0.977757453918457
+2021-11-26 01:21:59 INFO  ScoreIterationListener:393 - Score at iteration 34 is 0.49771106243133545
+2021-11-26 01:22:15 INFO  ScoreIterationListener:393 - Score at iteration 35 is 0.6764365434646606
+2021-11-26 01:22:30 INFO  ScoreIterationListener:393 - Score at iteration 36 is 0.5583344101905823
+2021-11-26 01:22:44 INFO  ScoreIterationListener:393 - Score at iteration 37 is 0.631230354309082
+2021-11-26 01:22:59 INFO  ScoreIterationListener:393 - Score at iteration 38 is 0.9857906103134155
+2021-11-26 01:23:15 INFO  ScoreIterationListener:393 - Score at iteration 39 is 0.9946905970573425
+2021-11-26 01:23:34 INFO  ScoreIterationListener:393 - Score at iteration 40 is 0.506186306476593
+2021-11-26 01:23:34 INFO  main:382 - Evaluate model at iter 40...
+2021-11-26 01:26:47 INFO  main:382 - 
+
+========================Evaluation Metrics========================
+ # of classes:    10
+ Accuracy:        0.7366
+ Precision:       0.7613
+ Recall:          0.7362
+ F1 Score:        0.7395
+Precision, recall & F1: macro-averaged (equally weighted avg. of 10 classes)
+
+
+=========================Confusion Matrix=========================
+  0  1  2  3  4  5  6  7  8  9
+-------------------------------
+ 13  0  1  0  0  2  0  1  3  2 | 0 = dress
+  0 22  1  0  0  0  0  0  0  0 | 1 = hat
+  0  0 14  0  0  5  0  0  2  1 | 2 = longsleeve
+  3  0  2 12  0  3  0  2  1  0 | 3 = outwear
+  0  0  0  0 19  0  0  3  0  0 | 4 = pants
+  0  0  3  3  0 14  0  1  1  0 | 5 = shirt
+  0  1  0  0  0  0 21  0  0  0 | 6 = shoes
+  0  0  0  0  1  0  0 18  4  0 | 7 = shorts
+  0  0  0  0  0  0  0  5 18  0 | 8 = skirt
+  1  0  1  0  0  2  0  1  3 14 | 9 = t-shirt
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-26 01:27:12 INFO  ScoreIterationListener:393 - Score at iteration 41 is 0.6346279382705688
+2021-11-26 01:27:27 INFO  ScoreIterationListener:393 - Score at iteration 42 is 0.9496263861656189
+2021-11-26 01:27:41 INFO  ScoreIterationListener:393 - Score at iteration 43 is 0.6893309950828552
+2021-11-26 01:27:56 INFO  ScoreIterationListener:393 - Score at iteration 44 is 0.9989479780197144
+2021-11-26 01:28:11 INFO  ScoreIterationListener:393 - Score at iteration 45 is 1.683700442314148
+2021-11-26 01:28:27 INFO  ScoreIterationListener:393 - Score at iteration 46 is 1.0847946405410767
+2021-11-26 01:28:43 INFO  ScoreIterationListener:393 - Score at iteration 47 is 1.0977330207824707
+2021-11-26 01:28:59 INFO  ScoreIterationListener:393 - Score at iteration 48 is 0.7217347025871277
+2021-11-26 01:29:16 INFO  ScoreIterationListener:393 - Score at iteration 49 is 0.5527024269104004
+2021-11-26 01:29:37 INFO  ScoreIterationListener:393 - Score at iteration 50 is 0.8118947148323059
+2021-11-26 01:29:37 INFO  main:382 - Evaluate model at iter 50...
+2021-11-26 01:33:07 INFO  main:382 - 
+
+========================Evaluation Metrics========================
+ # of classes:    10
+ Accuracy:        0.6920
+ Precision:       0.7738
+ Recall:          0.6923
+ F1 Score:        0.6904
+Precision, recall & F1: macro-averaged (equally weighted avg. of 10 classes)
+
+
+=========================Confusion Matrix=========================
+  0  1  2  3  4  5  6  7  8  9
+-------------------------------
+ 13  0  3  0  0  0  0  0  3  3 | 0 = dress
+  0 19  3  0  0  0  0  0  1  0 | 1 = hat
+  0  0 19  0  0  1  0  0  0  2 | 2 = longsleeve
+  2  0 11  7  0  1  0  0  1  1 | 3 = outwear
+  0  0  1  0 17  0  0  2  2  0 | 4 = pants
+  0  0  9  2  0  7  0  1  1  2 | 5 = shirt
+  0  1  1  0  0  0 19  0  0  1 | 6 = shoes
+  0  0  0  0  0  0  0 13 10  0 | 7 = shorts
+  0  0  0  0  0  0  0  0 23  0 | 8 = skirt
+  1  0  3  0  0  0  0  0  0 18 | 9 = t-shirt
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-26 01:33:32 INFO  ScoreIterationListener:393 - Score at iteration 51 is 0.8065828680992126
+2021-11-26 01:33:48 INFO  ScoreIterationListener:393 - Score at iteration 52 is 1.3951690196990967
+2021-11-26 01:34:04 INFO  ScoreIterationListener:393 - Score at iteration 53 is 1.739267349243164
+2021-11-26 01:34:19 INFO  ScoreIterationListener:393 - Score at iteration 54 is 0.8487060070037842
+2021-11-26 01:34:35 INFO  ScoreIterationListener:393 - Score at iteration 55 is 1.337859034538269
+2021-11-26 01:34:35 INFO  main:382 - Model build complete
+2021-11-26 01:35:32 INFO  main:382 - Model saved
+
+
+========================Evaluation Metrics========================
+ # of classes:    10
+ Accuracy:        0.7321
+ Precision:       0.7767
+ Recall:          0.7316
+ F1 Score:        0.7120
+Precision, recall & F1: macro-averaged (equally weighted avg. of 10 classes)
+
+
+=========================Confusion Matrix=========================
+  0  1  2  3  4  5  6  7  8  9
+-------------------------------
+ 15  0  0  0  0  1  1  1  1  3 | 0 = dress
+  0 22  0  0  0  0  1  0  0  0 | 1 = hat
+  6  0  3  5  0  6  0  0  0  2 | 2 = longsleeve
+  4  0  0 14  0  3  2  0  0  0 | 3 = outwear
+  0  0  0  0 19  0  0  3  0  0 | 4 = pants
+  0  1  0  2  0 19  0  0  0  0 | 5 = shirt
+  0  0  0  0  0  0 22  0  0  0 | 6 = shoes
+  0  0  0  0  1  0  1 20  1  0 | 7 = shorts
+  2  0  0  0  0  1  0  6 14  0 | 8 = skirt
+  3  0  0  0  0  3  0  0  0 16 | 9 = t-shirt
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-26 01:39:00 INFO  main:382 - Program End
+2021-11-26 01:39:00 INFO  main:382 - Train with 10 Epochs
+2021-11-26 01:39:14 INFO  ScoreIterationListener:393 - Score at iteration 56 is 0.43948671221733093
+2021-11-26 01:39:28 INFO  ScoreIterationListener:393 - Score at iteration 57 is 0.3424590528011322
+2021-11-26 01:39:42 INFO  ScoreIterationListener:393 - Score at iteration 58 is 0.20689523220062256
+2021-11-26 01:39:56 INFO  ScoreIterationListener:393 - Score at iteration 59 is 0.3919048309326172
+2021-11-26 01:40:15 INFO  ScoreIterationListener:393 - Score at iteration 60 is 0.3617749810218811
+2021-11-26 01:40:38 INFO  ScoreIterationListener:393 - Score at iteration 61 is 0.25155550241470337
+2021-11-26 01:40:52 INFO  ScoreIterationListener:393 - Score at iteration 62 is 0.3588901460170746
+2021-11-26 01:41:07 INFO  ScoreIterationListener:393 - Score at iteration 63 is 0.46585696935653687
+2021-11-26 01:41:21 INFO  ScoreIterationListener:393 - Score at iteration 64 is 0.5161102414131165
+2021-11-26 01:41:37 INFO  ScoreIterationListener:393 - Score at iteration 65 is 0.8745399117469788
+2021-11-26 01:41:53 INFO  ScoreIterationListener:393 - Score at iteration 66 is 0.2827341854572296
+2021-11-26 01:42:07 INFO  ScoreIterationListener:393 - Score at iteration 67 is 0.13745221495628357
+2021-11-26 01:42:22 INFO  ScoreIterationListener:393 - Score at iteration 68 is 0.24305535852909088
+2021-11-26 01:42:36 INFO  ScoreIterationListener:393 - Score at iteration 69 is 0.43034058809280396
+2021-11-26 01:42:56 INFO  ScoreIterationListener:393 - Score at iteration 70 is 0.3918802738189697
+2021-11-26 01:43:20 INFO  ScoreIterationListener:393 - Score at iteration 71 is 0.12063783407211304
+2021-11-26 01:43:35 INFO  ScoreIterationListener:393 - Score at iteration 72 is 0.08764635771512985
+2021-11-26 01:43:51 INFO  ScoreIterationListener:393 - Score at iteration 73 is 0.14709436893463135
+2021-11-26 01:44:07 INFO  ScoreIterationListener:393 - Score at iteration 74 is 1.054124355316162
+2021-11-26 01:44:22 INFO  ScoreIterationListener:393 - Score at iteration 75 is 0.34466809034347534
+2021-11-26 01:44:37 INFO  ScoreIterationListener:393 - Score at iteration 76 is 0.11361219733953476
+2021-11-26 01:44:53 INFO  ScoreIterationListener:393 - Score at iteration 77 is 0.1816379576921463
+2021-11-26 01:45:07 INFO  ScoreIterationListener:393 - Score at iteration 78 is 0.25438350439071655
+2021-11-26 01:45:23 INFO  ScoreIterationListener:393 - Score at iteration 79 is 0.21937690675258636
+2021-11-26 01:45:44 INFO  ScoreIterationListener:393 - Score at iteration 80 is 0.18214987218379974
+2021-11-26 01:46:07 INFO  ScoreIterationListener:393 - Score at iteration 81 is 0.27584370970726013
+2021-11-26 01:46:22 INFO  ScoreIterationListener:393 - Score at iteration 82 is 0.4242264926433563
+2021-11-26 01:46:37 INFO  ScoreIterationListener:393 - Score at iteration 83 is 0.3697598874568939
+2021-11-26 01:46:52 INFO  ScoreIterationListener:393 - Score at iteration 84 is 0.32830947637557983
+2021-11-26 01:47:08 INFO  ScoreIterationListener:393 - Score at iteration 85 is 0.2944425940513611
+2021-11-26 01:47:23 INFO  ScoreIterationListener:393 - Score at iteration 86 is 0.3276402950286865
+2021-11-26 01:47:38 INFO  ScoreIterationListener:393 - Score at iteration 87 is 0.5080423951148987
+2021-11-26 01:47:57 INFO  ScoreIterationListener:393 - Score at iteration 88 is 0.09186900407075882
+2021-11-26 01:48:27 INFO  ScoreIterationListener:393 - Score at iteration 89 is 0.3736603260040283
+2021-11-26 01:48:48 INFO  ScoreIterationListener:393 - Score at iteration 90 is 0.32881492376327515
+2021-11-26 01:49:27 INFO  ScoreIterationListener:393 - Score at iteration 91 is 0.12420707195997238
+2021-11-26 01:49:44 INFO  ScoreIterationListener:393 - Score at iteration 92 is 0.2726801931858063
+2021-11-26 01:49:59 INFO  ScoreIterationListener:393 - Score at iteration 93 is 0.07848233729600906
+2021-11-26 01:50:16 INFO  ScoreIterationListener:393 - Score at iteration 94 is 0.08591647446155548
+2021-11-26 01:50:31 INFO  ScoreIterationListener:393 - Score at iteration 95 is 0.21471329033374786
+2021-11-26 01:50:50 INFO  ScoreIterationListener:393 - Score at iteration 96 is 0.3376372158527374
+2021-11-26 01:51:05 INFO  ScoreIterationListener:393 - Score at iteration 97 is 0.09479117393493652
+2021-11-26 01:51:21 INFO  ScoreIterationListener:393 - Score at iteration 98 is 0.21467724442481995
+2021-11-26 01:51:37 INFO  ScoreIterationListener:393 - Score at iteration 99 is 0.16512137651443481
+2021-11-26 01:51:57 INFO  ScoreIterationListener:393 - Score at iteration 100 is 0.13069036602973938
+2021-11-26 01:52:21 INFO  ScoreIterationListener:393 - Score at iteration 101 is 0.40981563925743103
+2021-11-26 01:52:38 INFO  ScoreIterationListener:393 - Score at iteration 102 is 0.14505968987941742
+2021-11-26 01:52:53 INFO  ScoreIterationListener:393 - Score at iteration 103 is 0.20558322966098785
+2021-11-26 01:53:10 INFO  ScoreIterationListener:393 - Score at iteration 104 is 0.24594974517822266
+2021-11-26 01:53:24 INFO  ScoreIterationListener:393 - Score at iteration 105 is 0.22921906411647797
+2021-11-26 01:53:40 INFO  ScoreIterationListener:393 - Score at iteration 106 is 0.41473886370658875
+2021-11-26 01:53:55 INFO  ScoreIterationListener:393 - Score at iteration 107 is 0.331842303276062
+2021-11-26 01:54:09 INFO  ScoreIterationListener:393 - Score at iteration 108 is 0.31535640358924866
+2021-11-26 01:54:24 INFO  ScoreIterationListener:393 - Score at iteration 109 is 0.4288562536239624
+2021-11-26 01:54:43 INFO  ScoreIterationListener:393 - Score at iteration 110 is 0.2853471040725708
+2021-11-26 01:55:06 INFO  ScoreIterationListener:393 - Score at iteration 111 is 0.5319337844848633
+2021-11-26 01:55:06 INFO  EvaluativeListener:386 - Starting evaluation nr. 1
+2021-11-26 02:08:37 INFO  EvaluativeListener:382 - Reporting evaluation results:
+2021-11-26 02:08:37 INFO  EvaluativeListener:393 - Evaluation:
+
+
+========================Evaluation Metrics========================
+ # of classes:    10
+ Accuracy:        0.9241
+ Precision:       0.9424
+ Recall:          0.9240
+ F1 Score:        0.9252
+Precision, recall & F1: macro-averaged (equally weighted avg. of 10 classes)
+
+
+=========================Confusion Matrix=========================
+  0  1  2  3  4  5  6  7  8  9
+-------------------------------
+ 77  0  0  0  0  0  0  0  0 13 | 0 = 0
+  0 89  0  0  0  0  0  0  0  0 | 1 = 1
+  0  0 88  0  0  0  0  0  0  2 | 2 = 2
+  1  0 20 62  0  0  0  0  0  6 | 3 = 3
+  0  0  0  0 89  0  0  0  0  1 | 4 = 4
+  0  2  6  0  0 73  0  0  0  9 | 5 = 5
+  0  0  0  0  0  0 90  0  0  0 | 6 = 6
+  0  1  1  0  0  0  0 87  0  0 | 7 = 7
+  0  1  0  0  0  0  0  0 83  5 | 8 = 8
+  0  0  0  0  0  0  0  0  0 90 | 9 = 9
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-26 02:08:37 INFO  EvaluativeListener:386 - Starting evaluation nr. 1
+2021-11-26 02:12:00 INFO  EvaluativeListener:382 - Reporting evaluation results:
+2021-11-26 02:12:00 INFO  EvaluativeListener:393 - Evaluation:
+
+
+========================Evaluation Metrics========================
+ # of classes:    10
+ Accuracy:        0.7277
+ Precision:       0.7939
+ Recall:          0.7281
+ F1 Score:        0.7271
+Precision, recall & F1: macro-averaged (equally weighted avg. of 10 classes)
+
+
+=========================Confusion Matrix=========================
+  0  1  2  3  4  5  6  7  8  9
+-------------------------------
+ 12  0  3  0  0  0  0  0  0  7 | 0 = 0
+  0 22  0  0  0  0  1  0  0  0 | 1 = 1
+  0  0 15  0  0  2  0  0  0  5 | 2 = 2
+  1  0  7  8  0  2  0  0  0  5 | 3 = 3
+  0  0  0  0 19  0  0  3  0  0 | 4 = 4
+  0  2  6  0  0 10  0  0  0  4 | 5 = 5
+  0  0  0  0  0  0 22  0  0  0 | 6 = 6
+  0  1  0  0  2  0  0 17  1  2 | 7 = 7
+  0  1  0  0  0  0  0  1 18  3 | 8 = 8
+  1  0  1  0  0  0  0  0  0 20 | 9 = 9
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-26 02:12:18 INFO  ScoreIterationListener:393 - Score at iteration 112 is 0.1839391440153122
+2021-11-26 02:12:35 INFO  ScoreIterationListener:393 - Score at iteration 113 is 0.3113577365875244
+2021-11-26 02:12:50 INFO  ScoreIterationListener:393 - Score at iteration 114 is 0.057480234652757645
+2021-11-26 02:13:05 INFO  ScoreIterationListener:393 - Score at iteration 115 is 0.3556315004825592
+2021-11-26 02:13:21 INFO  ScoreIterationListener:393 - Score at iteration 116 is 0.07510767877101898
+2021-11-26 02:13:36 INFO  ScoreIterationListener:393 - Score at iteration 117 is 0.34007757902145386
+2021-11-26 02:13:52 INFO  ScoreIterationListener:393 - Score at iteration 118 is 0.24261905252933502
+2021-11-26 02:14:09 INFO  ScoreIterationListener:393 - Score at iteration 119 is 0.13879449665546417
+2021-11-26 02:14:30 INFO  ScoreIterationListener:393 - Score at iteration 120 is 0.31613901257514954
+2021-11-26 02:14:55 INFO  ScoreIterationListener:393 - Score at iteration 121 is 0.19371290504932404
+2021-11-26 02:15:10 INFO  ScoreIterationListener:393 - Score at iteration 122 is 0.22438086569309235
+2021-11-26 02:15:25 INFO  ScoreIterationListener:393 - Score at iteration 123 is 0.16982842981815338
+2021-11-26 02:15:40 INFO  ScoreIterationListener:393 - Score at iteration 124 is 0.04019956290721893
+2021-11-26 02:15:55 INFO  ScoreIterationListener:393 - Score at iteration 125 is 0.15453267097473145
+2021-11-26 02:16:10 INFO  ScoreIterationListener:393 - Score at iteration 126 is 0.3380868434906006
+2021-11-26 02:16:27 INFO  ScoreIterationListener:393 - Score at iteration 127 is 0.22494491934776306
+2021-11-26 02:16:42 INFO  ScoreIterationListener:393 - Score at iteration 128 is 0.019035084173083305
+2021-11-26 02:16:58 INFO  ScoreIterationListener:393 - Score at iteration 129 is 0.1065749078989029
+2021-11-26 02:17:19 INFO  ScoreIterationListener:393 - Score at iteration 130 is 0.0824582576751709
+2021-11-26 02:17:44 INFO  ScoreIterationListener:393 - Score at iteration 131 is 0.2668772339820862
+2021-11-26 02:17:59 INFO  ScoreIterationListener:393 - Score at iteration 132 is 0.04472135007381439
+2021-11-26 02:18:14 INFO  ScoreIterationListener:393 - Score at iteration 133 is 0.036161553114652634
+2021-11-26 02:18:29 INFO  ScoreIterationListener:393 - Score at iteration 134 is 0.13425007462501526
+2021-11-26 02:18:44 INFO  ScoreIterationListener:393 - Score at iteration 135 is 0.05481575429439545
+2021-11-26 02:18:59 INFO  ScoreIterationListener:393 - Score at iteration 136 is 0.013689851388335228
+2021-11-26 02:19:15 INFO  ScoreIterationListener:393 - Score at iteration 137 is 0.09708241373300552
+2021-11-26 02:19:32 INFO  ScoreIterationListener:393 - Score at iteration 138 is 0.05420113727450371
+2021-11-26 02:19:47 INFO  ScoreIterationListener:393 - Score at iteration 139 is 0.121629498898983
+2021-11-26 02:20:07 INFO  ScoreIterationListener:393 - Score at iteration 140 is 0.22670729458332062
+2021-11-26 02:20:34 INFO  ScoreIterationListener:393 - Score at iteration 141 is 0.11349771171808243
+2021-11-26 02:20:49 INFO  ScoreIterationListener:393 - Score at iteration 142 is 0.029802991077303886
+2021-11-26 02:21:05 INFO  ScoreIterationListener:393 - Score at iteration 143 is 0.15725713968276978
+2021-11-26 02:21:20 INFO  ScoreIterationListener:393 - Score at iteration 144 is 0.04761963337659836
+2021-11-26 02:21:34 INFO  ScoreIterationListener:393 - Score at iteration 145 is 0.029196780174970627
+2021-11-26 02:21:51 INFO  ScoreIterationListener:393 - Score at iteration 146 is 0.01684028096497059
+2021-11-26 02:22:07 INFO  ScoreIterationListener:393 - Score at iteration 147 is 0.11247441172599792
+2021-11-26 02:22:22 INFO  ScoreIterationListener:393 - Score at iteration 148 is 0.17845258116722107
+2021-11-26 02:22:36 INFO  ScoreIterationListener:393 - Score at iteration 149 is 0.15958349406719208
+2021-11-26 02:22:56 INFO  ScoreIterationListener:393 - Score at iteration 150 is 0.10809265077114105
+2021-11-26 02:23:21 INFO  ScoreIterationListener:393 - Score at iteration 151 is 0.10881510376930237
+2021-11-26 02:23:35 INFO  ScoreIterationListener:393 - Score at iteration 152 is 0.029027938842773438
+2021-11-26 02:23:50 INFO  ScoreIterationListener:393 - Score at iteration 153 is 0.16093482077121735
+2021-11-26 02:24:05 INFO  ScoreIterationListener:393 - Score at iteration 154 is 0.13976573944091797
+2021-11-26 02:24:20 INFO  ScoreIterationListener:393 - Score at iteration 155 is 0.08890263736248016
+2021-11-26 02:24:35 INFO  ScoreIterationListener:393 - Score at iteration 156 is 0.0149144371971488
+2021-11-26 02:24:50 INFO  ScoreIterationListener:393 - Score at iteration 157 is 0.16340172290802002
+2021-11-26 02:25:05 INFO  ScoreIterationListener:393 - Score at iteration 158 is 0.01461658626794815
+2021-11-26 02:25:20 INFO  ScoreIterationListener:393 - Score at iteration 159 is 0.17230169475078583
+2021-11-26 02:25:40 INFO  ScoreIterationListener:393 - Score at iteration 160 is 0.05079242214560509
+2021-11-26 02:26:04 INFO  ScoreIterationListener:393 - Score at iteration 161 is 0.08221322298049927
+2021-11-26 02:26:19 INFO  ScoreIterationListener:393 - Score at iteration 162 is 0.07808713614940643
+2021-11-26 02:26:34 INFO  ScoreIterationListener:393 - Score at iteration 163 is 0.034739162772893906
+2021-11-26 02:26:49 INFO  ScoreIterationListener:393 - Score at iteration 164 is 0.03706483915448189
+2021-11-26 02:27:04 INFO  ScoreIterationListener:393 - Score at iteration 165 is 0.041128307580947876
+2021-11-26 02:27:19 INFO  ScoreIterationListener:393 - Score at iteration 166 is 0.2081129252910614
+2021-11-26 02:27:34 INFO  ScoreIterationListener:393 - Score at iteration 167 is 0.20833426713943481
+2021-11-26 02:27:34 INFO  EvaluativeListener:386 - Starting evaluation nr. 2
+2021-11-26 02:41:17 INFO  EvaluativeListener:382 - Reporting evaluation results:
+2021-11-26 02:41:17 INFO  EvaluativeListener:393 - Evaluation:
+
+
+========================Evaluation Metrics========================
+ # of classes:    10
+ Accuracy:        0.9877
+ Precision:       0.9886
+ Recall:          0.9877
+ F1 Score:        0.9877
+Precision, recall & F1: macro-averaged (equally weighted avg. of 10 classes)
+
+
+=========================Confusion Matrix=========================
+  0  1  2  3  4  5  6  7  8  9
+-------------------------------
+ 89  0  0  0  0  0  0  0  1  0 | 0 = 0
+  0 89  0  0  0  0  0  0  0  0 | 1 = 1
+  1  0 89  0  0  0  0  0  0  0 | 2 = 2
+  0  0  1 88  0  0  0  0  0  0 | 3 = 3
+  0  0  0  0 90  0  0  0  0  0 | 4 = 4
+  0  0  0  0  0 89  0  0  1  0 | 5 = 5
+  0  0  0  0  0  0 90  0  0  0 | 6 = 6
+  0  0  0  0  0  0  0 82  7  0 | 7 = 7
+  0  0  0  0  0  0  0  0 89  0 | 8 = 8
+  0  0  0  0  0  0  0  0  0 90 | 9 = 9
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-26 02:41:17 INFO  EvaluativeListener:386 - Starting evaluation nr. 2
+2021-11-26 02:44:48 INFO  EvaluativeListener:382 - Reporting evaluation results:
+2021-11-26 02:44:48 INFO  EvaluativeListener:393 - Evaluation:
+
+
+========================Evaluation Metrics========================
+ # of classes:    10
+ Accuracy:        0.7634
+ Precision:       0.7818
+ Recall:          0.7636
+ F1 Score:        0.7606
+Precision, recall & F1: macro-averaged (equally weighted avg. of 10 classes)
+
+
+=========================Confusion Matrix=========================
+  0  1  2  3  4  5  6  7  8  9
+-------------------------------
+ 13  0  2  0  0  1  0  0  2  4 | 0 = 0
+  0 22  0  0  0  0  1  0  0  0 | 1 = 1
+  0  0 13  2  0  3  0  0  3  1 | 2 = 2
+  5  0  2 13  0  2  0  0  1  0 | 3 = 3
+  0  0  0  0 19  0  0  3  0  0 | 4 = 4
+  0  0  2  3  0 17  0  0  0  0 | 5 = 5
+  0  0  0  0  0  0 22  0  0  0 | 6 = 6
+  0  0  0  0  1  0  0 11 11  0 | 7 = 7
+  0  0  0  0  0  0  0  0 23  0 | 8 = 8
+  1  0  1  0  0  0  0  0  2 18 | 9 = 9
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+2021-11-26 02:45:04 INFO  ScoreIterationListener:393 - Score at iteration 168 is 0.024343818426132202
+2021-11-26 02:45:21 INFO  ScoreIterationListener:393 - Score at iteration 169 is 0.025269707664847374
+2021-11-26 02:45:43 INFO  ScoreIterationListener:393 - Score at iteration 170 is 0.13855813443660736
+2021-11-26 02:46:07 INFO  ScoreIterationListener:393 - Score at iteration 171 is 0.06672260165214539
+2021-11-26 02:46:21 INFO  ScoreIterationListener:393 - Score at iteration 172 is 0.0425703190267086
+2021-11-26 02:46:36 INFO  ScoreIterationListener:393 - Score at iteration 173 is 0.04135735705494881
+2021-11-26 02:46:43 INFO  VertxUIServer:382 - Deeplearning4j UI server is auto-stopping in shutdown hook.
+2021-11-26 02:46:43 INFO  VertxUIServer:382 - Deeplearning4j UI server stopped.
+
+Process finished with exit code 130
