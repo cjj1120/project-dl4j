@@ -1,20 +1,4 @@
 package ai.certifai.chapstone;
-/*
- * Copyright (c) 2020-2021 CertifAI Sdn. Bhd.
- *
- * This program and the accompanying materials are made available under the
- * terms of the Apache License, Version 2.0 which is available at
- * https://www.apache.org/licenses/LICENSE-2.0.
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
- *
- * SPDX-License-Identifier: Apache-2.0
- *
- */
 
 import ai.certifai.chapstone.dataHelpers.LabelImgXmlLabelProvider;
 import org.bytedeco.javacv.CanvasFrame;
@@ -68,10 +52,9 @@ import static org.bytedeco.opencv.global.opencv_imgproc.*;
 import static org.bytedeco.opencv.helper.opencv_core.RGB;
 
 /**
- * This is an example of a object detection using YOLOv2 architecture.
- * This example illustrate a model training process with transfer learning approach by fine tuning the last few layers of a YOLOv2 pretrained model
- * This model is able to detect avocado and banana in images.
- * Please adjust the batch size or switch between using CPU/GPU depending on your system's specifications (GPU RAM, CPU RAM and etc.)
+ * This is a project of a safety helmet detection using YOLOv2 architecture.
+ * This project illustrate a model training process with transfer learning approach by fine tuning the last few layers of a YOLOv2 pretrained model
+ * This model have 2 classes and able to detect safty helmet and head in images and webcam.
  */
 //
 public class PPEDetector {
