@@ -3,5 +3,4 @@
 *.h5
 *.hdf5
 *.he5
-**/*.jpg
-!/Clothing Classification Project/asset/*.jpg
+*.jpg
