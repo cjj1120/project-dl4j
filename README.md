@@ -1,14 +1,14 @@
-# Clothing Items Classification Project 
-This project aims to classify 5 classes of clothing items (INSERT THE 5 CLASSES)
-The practical applications of this project would be social media, e-commerce, clothing retail industry and criminal laws
+# PPE Helmet detection Project 
+This study aims to develop a framework to sense in real-time the safety compliance of workers with respect to PPE. 
+The final model can detect whether the human subject is wearing helmet or not. 
 
 
 ## Description of the project
-Transfer learning is used in this project, VGG 16 is used as the base model, two more Dense layers and output layer were added to the model. 
+Transfer learning is used in this project, YOLO V2 is used as the base model, one convolutional layer and the output layer were modified according to current project. 
 
 
 i.	Add a diagram
-![Alt text](asset/network_architecture.PNG?raw=true "Title")
+![Alt text](PPE-Project/asset/network_architecture.PNG?raw=true "Title")
 ii.	Input and output information
 
 
@@ -24,7 +24,9 @@ The source of the dataset is from Kaggle, [here](https://www.kaggle.com/agrigore
 ###	Model Training
 ###	Testing
 ###	Future Development
-###	Contact information
+
+
 ###	List of Group members
-- Jiong Jiet 
-- Aslam 
+- Jiong Jiet: cjj8168@gmail.com
+- Aslam: ahmadaslam3838@gmail.com 
+ 
