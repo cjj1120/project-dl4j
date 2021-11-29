@@ -1,5 +1,6 @@
 # ignore hdf5 files
 *.hdf
+*.zip
 *.h5
 *.hdf5
 *.he5

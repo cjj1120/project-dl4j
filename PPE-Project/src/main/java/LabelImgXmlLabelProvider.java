@@ -15,7 +15,6 @@
  *
  */
 
-package ai.certifai.chapstone.dataHelpers;
 
 import org.apache.commons.io.FilenameUtils;
 import org.datavec.image.recordreader.objdetect.ImageObject;

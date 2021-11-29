@@ -1,6 +1,4 @@
-package ai.certifai.chapstone;
 
-import ai.certifai.chapstone.dataHelpers.LabelImgXmlLabelProvider;
 import org.bytedeco.javacv.CanvasFrame;
 import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.OpenCVFrameConverter;
@@ -58,7 +56,7 @@ import static org.bytedeco.opencv.helper.opencv_core.RGB;
  */
 //
 public class PPEDetector {
-    private static final Logger log = LoggerFactory.getLogger(ai.certifai.chapstone.PPEDetector.class);
+    private static final Logger log = LoggerFactory.getLogger(PPEDetector.class);
     private static int seed = 11;
     private static double detectionThreshold = 0.7;
     private static int nBoxes = 6;
@@ -130,6 +128,7 @@ public class PPEDetector {
             Nd4j.getRandom().setSeed(seed);
             log.info("Load model...");
             model = ModelSerializer.restoreComputationGraph(modelFilename);
+            System.out.println(model.summary());
         } else
            {
             Nd4j.getRandom().setSeed(seed);
