@@ -19,7 +19,7 @@ The source of the dataset is from Kaggle, [here](https://www.kaggle.com/agrigore
 ###	Model Training
 Dataset with annotation in Xml format is used to train the neural network. 
 ###	Testing
-![Alt text](PPE-Project/asset/example.PNG?raw=true "Title")
+![Alt text](https://github.com/cjj1120/project-dl4j/blob/main/PPE-Project/asset/example.png)
 
 ###	Future Development
 The model can differentiate human subject wearing helmet vs not wearing helmet well. However, the model is not very accurate yet, more tuning and improvement is needed to improve the accuracy. 
