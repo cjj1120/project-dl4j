@@ -8,4 +8,6 @@
 *.xml
 **/*.png
 !/PPE-Project/asset/*.png
-!PPE-Project/asset/*.png
+!/PPE-Project/asset/*.PNG
+!/PPE-Project/asset/
+
