@@ -180,7 +180,7 @@ public class PPEDetector {
                 .addLayer("conv2d_23",
                         new ConvolutionLayer.Builder(1, 1)
                                 .nIn(1024)
-                                .nOut(nBoxes * (5 + nClasses))
+                                .nOut(nBoxes * (5 + nClasses))  //nBoxes =6, nClasses=2
                                 .stride(1, 1)
                                 .convolutionMode(ConvolutionMode.Same)
                                 .weightInit(WeightInit.XAVIER)
